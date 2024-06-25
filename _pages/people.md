@@ -74,16 +74,16 @@ h2 {
   }
 </style>
 <div class="container">
-{% include member.html  url="https://acuna.io" image="/assets/images/people/acuna-daniel.png" name="Daniel Acuna" position="Associate Professor in Computer Science at CU Boulder" %}
+{% include member.html  url="https://acuna.io" image="{{ site.baseurl }}/assets/images/people/acuna-daniel.png" name="Daniel Acuna" position="Associate Professor in Computer Science at CU Boulder" %}
 </div>
 
 ## Doctoral students
 
 <div class="container">
 
-{% include member.html name="Carolina Chávez-Ruelas" image="/assets/images/people/carolina.png" url="https://carolinachru.github.io/" position="CS Dept, from Fall 2023 (w/ Aaron Clauset)" %}
+{% include member.html name="Carolina Chávez-Ruelas" image="{{ site.baseurl }}/assets/images/people/carolina.png" url="https://carolinachru.github.io/" position="CS Dept, from Fall 2023 (w/ Aaron Clauset)" %}
 
-{% include member.html name="Meysam Varasteh" url="https://sites.google.com/view/meysamvarsth/home" image="/assets/images/people/meysam.jpg" position="CS Dept, from Fall 2023 (w/ Robin Burke)" %}
+{% include member.html name="Meysam Varasteh" url="https://sites.google.com/view/meysamvarsth/home" image="{{ site.baseurl }}/assets/images/people/meysam.jpg" position="CS Dept, from Fall 2023 (w/ Robin Burke)" %}
 </div>
 ## Master students
 <div class="container">
