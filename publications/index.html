@@ -205,7 +205,7 @@
           <aside class="sidebar__right ">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Publication year</h4></header>
-              <ul class="toc__menu"><li><a href="#under-review">Under review</a></li><li><a href="#2023">2023</a></li><li><a href="#2022">2022</a></li><li><a href="#2021">2021</a></li><li><a href="#2020">2020</a></li><li><a href="#2019">2019</a></li><li><a href="#2018">2018</a></li><li><a href="#2017">2017</a></li><li><a href="#2016">2016</a></li><li><a href="#2008---2015">2008 - 2015</a></li></ul>
+              <ul class="toc__menu"><li><a href="#2050"> Under Review </a></li><li><a href="#2023"> 2023 </a></li><li><a href="#2022"> 2022 </a></li><li><a href="#2021"> 2021 </a></li><li><a href="#2020"> 2020 </a></li><li><a href="#2019"> 2019 </a></li><li><a href="#2018"> 2018 </a></li><li><a href="#2017"> 2017 </a></li><li><a href="#2016"> 2016 </a></li><li><a href="#2008-2015"> 2008-2015 </a></li></ul>
 
             </nav>
           </aside>
@@ -321,25 +321,48 @@ var waitForLoad = function () {
     if (typeof $ != "undefined") {
         $(document).ready(function() {
             var filter = function() {
+                var doc_id_value = "";
+                var map_data = set_year_paper_id_map();
                 $(".bib_entry").each(function() {
                     var entry_type_article = $(this).hasClass("entry_type_article");
                     var entry_type_conference = $(this).hasClass("entry_type_inproceedings");                    
-                    // check for code, demo, dataset
                     var code_exists = $(this).hasClass("code_exists_true");
                     var demo_exists = $(this).hasClass("demo_exists_true");
                     var dataset_exists = $(this).hasClass("dataset_exists_true");
                     
-                    var show_based_on_entry_type = (entry_type_article && $("#entry_type_article").is(":checked")) || (entry_type_conference && $("#entry_type_conference").is(":checked")) || (dataset_exists && $("#entry_type_dataset").is(":checked")) || (code_exists && $("#entry_type_code").is(":checked")) || (demo_exists && $("#entry_type_demo").is(":checked"));
+                    var show_based_on_entry_type = (entry_type_article && $("#entry_type_article").is(":checked")) || 
+                                                   (entry_type_conference && $("#entry_type_conference").is(":checked")) || 
+                                                   (dataset_exists && $("#entry_type_dataset").is(":checked")) || 
+                                                   (code_exists && $("#entry_type_code").is(":checked")) || 
+                                                   (demo_exists && $("#entry_type_demo").is(":checked"));
 
                     if (show_based_on_entry_type) {
-                        $(this).show();
+                        $(this).closest('li').show();
+                        $.each(this.attributes, function() {
+                            if (this.name === "id") {
+                                doc_id_value = this.value
+                            }
+                        });
+                        for (var year in map_data) {
+                            if (map_data.hasOwnProperty(year)) {
+                                map_data[year].forEach(function(item) {
+                                    if (doc_id_value === item) {
+                                        document.getElementById(year).style.display = "block";
+                                        document.getElementById(year + '-hr').style.display = "block";
+                                    }
+                                });
+                            }
+                        }
                     } else {
-                        $(this).hide();
+                        $(this).closest('li').hide();
                     }
                 });
+
             };
+            set_display_status();
             filter();
             $("input").change(function() {
+                set_display_status();
                 filter();
             });
         });
@@ -347,11 +370,53 @@ var waitForLoad = function () {
         setTimeout(waitForLoad, 100);
     }
 };
+
+function set_display_status() {
+    // For every new header added to represent new year, set the display attribute to "none" in this function.
+
+        document.getElementById('2016').style.display = "none";
+        document.getElementById('2016-hr').style.display = "none";
+        document.getElementById('2017').style.display = "none";
+        document.getElementById('2017-hr').style.display = "none";
+        document.getElementById('2018').style.display = "none";
+        document.getElementById('2018-hr').style.display = "none";
+        document.getElementById('2019').style.display = "none";
+        document.getElementById('2019-hr').style.display = "none";
+        document.getElementById('2020').style.display = "none";
+        document.getElementById('2020-hr').style.display = "none";
+        document.getElementById('2021').style.display = "none";
+        document.getElementById('2021-hr').style.display = "none";
+        document.getElementById('2022').style.display = "none";
+        document.getElementById('2022-hr').style.display = "none";
+        document.getElementById('2023').style.display = "none";
+        document.getElementById('2023-hr').style.display = "none";
+        document.getElementById('2050').style.display = "none";
+        document.getElementById('2050-hr').style.display = "none";
+        document.getElementById('2008-2015').style.display = "none";
+        document.getElementById('2008-2015-hr').style.display = "none";
+}
+
+function set_year_paper_id_map() {
+    // Update the below object with the year and paper id of every new paper added in references.bib
+    return  {
+            '2016': ["ramkumar2016chunking", "ethier2016adaptive", "achakulvisut2016science"],
+            '2017': ["shema2017show"],
+            '2018': ["acuna2018bioscience", "teplitskiy2018sociology", "lienard2018intellectual"],
+            '2019': ["lee2019limiting", "zeng2019dead"],
+            '2020': ["zeng2020finding", "liang2020artificial", "zeng2020assigning", "achakulvisut2020pubmed", "jas2020pyglmnet", "zeng2020modeling", "zhuangacuna2020", "liangacuna2020", "liang2020don", "zengacuna2020", "zeng2020gotfunding"],
+            '2021': ["10.1145/3461702.3462616", "acunaiconference2022", "zhuangacuna2021"],
+            '2022': ["acuna2022", "keacuna2022"],
+            '2023': ["zhuang2023computational"],
+            '2050': ["zhou2022paraphrase", "zhuangacuna2022", "acuna2022predicting"],
+            '2008-2015': ["acuna2008bayesian", "acuna2008structure","acuna2009improving","acuna2010people", "acuna2010structure","acuna2011rational","avraham2012toward", "acuna2012predicting","acuna2013future","acuna2014multifaceted","acuna2015using",""],
+    }
+}
 waitForLoad();
 
 </script>
 
-<h2 id="under-review">Under review</h2>
+<h1 id="2050"> Under Review </h1>
+<hr id="2050-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -520,7 +585,8 @@ H,
 
 </span></li></ol>
 
-<h2 id="2023">2023</h2>
+<h1 id="2023"> 2023 </h1>
+<hr id="2023-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -585,7 +651,8 @@ DE</span> (2023),
 
 </span></li></ol>
 
-<h2 id="2022">2022</h2>
+<h1 id="2022"> 2022 </h1>
+<hr id="2022-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -727,7 +794,8 @@ DE</span> (2022),
 
 </span></li></ol>
 
-<h2 id="2021">2021</h2>
+<h1 id="2021"> 2021 </h1>
+<hr id="2021-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -916,7 +984,8 @@ DE</span> (2021),
 
 </span></li></ol>
 
-<h2 id="2020">2020</h2>
+<h1 id="2020"> 2020 </h1>
+<hr id="2020-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -1553,7 +1622,8 @@ DE</span> (2020),
 
 </span></li></ol>
 
-<h2 id="2019">2019</h2>
+<h1 id="2019"> 2019 </h1>
+<hr id="2019-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -1677,7 +1747,8 @@ DE</span> (2019),
 
 </span></li></ol>
 
-<h2 id="2018">2018</h2>
+<h1 id="2018"> 2018 </h1>
+<hr id="2018-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -1875,7 +1946,8 @@ SV (2018),
 
 </span></li></ol>
 
-<h2 id="2017">2017</h2>
+<h1 id="2017"> 2017 </h1>
+<hr id="2017-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -1927,7 +1999,8 @@ DE</span> (2017),
 
 </span></li></ol>
 
-<h2 id="2016">2016</h2>
+<h1 id="2016"> 2016 </h1>
+<hr id="2016-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
@@ -2117,7 +2190,8 @@ K (2016),
 
 </span></li></ol>
 
-<h2 id="2008---2015">2008 - 2015</h2>
+<h1 id="2008-2015"> 2008-2015 </h1>
+<hr id="2008-2015-hr" />
 
 <ol class="bibliography"><li><!--  Check if entry.press_url0, entry.press_url1, entry.press_url2 or entry.press_url3 exists -->
 
