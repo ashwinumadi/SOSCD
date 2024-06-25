@@ -30,7 +30,7 @@ def generate_html_for_year(year, events)
 end
 
 # Read YAML file
-news_data = YAML.safe_load(File.read('./news_content.yml'))
+news_data = YAML.safe_load(File.read('./news.yml'))
 
 # Generate markdown content
 markdown_content = ""
