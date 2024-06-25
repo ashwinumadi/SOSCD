@@ -151,15 +151,29 @@ script += """
 <h1  id='2008-2015'> 2008-2015 </h1>
 <hr  id='2008-2015-hr'>
 {% bibliography --query @*[year<=2015]%}
+
 """
 
 # Write the script to a markdown file
-markdown_content = File.read('./_pages/publications.md')
-markdown_content += script
+#markdown_content = File.read('./_pages/publications.md')
+#markdown_content += script
 
 # Write back to the file
-File.open('./_pages/publications.md', 'w') do |file|
-  file.write(markdown_content)
+#File.open('./_pages/publications.md', 'w') do |file|
+#  file.write(markdown_content)
+#end
+
+file_path = './_pages/publications.md'
+
+# Read the file
+content = File.read(file_path)
+
+# Insert the text between the specified lines
+new_content = content.gsub(/(<!-- DO NOT REMOVE THIS LINE : BEGIN -->)(.*?)(<!-- DO NOT REMOVE THIS LINE : END -->)/m) do
+  "#{$1}\n#{script}#{$3}"
 end
+
+# Write the updated content back to the file
+File.open(file_path, 'w') { |file| file.write(new_content) }
 
 puts "Markdown file 'publications.md' has been generated."
