@@ -25,8 +25,19 @@ jobs:
         gem install bundler
         bundle install
         bundle exec jekyll build
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+    - name: Deploy
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: |
+        set -xo pipefail
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git checkout gh-pages
+        ls -Q | grep -v _site | xargs rm -rf
+        mv _site/* .
+        rm -rf _site
+        rm -rf .jekyll-cache
+        [[ -n "$(git status --porcelain)" ]] || exit 0
+        git add .
+        git commit -m "Build $(git rev-parse master | grep -o '^.\{10\}')"
+        git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
