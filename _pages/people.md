@@ -74,7 +74,7 @@ h2 {
   }
 </style>
 <div class="container">
-{% include member.html url='https://ac1una.io' image='/SOSCD/assets/images/people/acuna-daniel.png' name='Daniel Acuna' position='Associate Professor in Computer Science at CU Boulder' %}
+{% include member.html url='https://acuna.io' image='/SOSCD/assets/images/people/acuna-daniel.png' name='Daniel Acuna' position='Associate Professor in Computer Science at CU Boulder' %}
 
 </div>
 
