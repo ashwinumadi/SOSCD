@@ -1,1 +1,1 @@
-Sitemap: https://scienceofscience.org/sitemap.xml
+Sitemap: https://ashwinumadi.github.io/soscd//sitemap.xml
