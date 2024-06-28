@@ -23,9 +23,13 @@
 - If there is no 'gh-pages' branch in your repository, run the following commands on your terminal first. 
 
 `git checkout --orphan gh-pages
+
 git rm -rf .
+
 git commit -m "Initial gh-pages commit"
+
 git push origin gh-pages
+
 `
 
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
