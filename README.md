@@ -18,19 +18,26 @@
 
 ## Staging Deployment : How to deploy the website on personal github repository to validate future design changes.
 
-- run the script : generate_staging_deployment.sh to set the urls throughout the repository to deploy on personal github portfolio to validate design changes on personal github portfolio (staging environment).
-- In Settings of the repository, Navigate to Pages. Under Builld and deployment, set Source as Deploy from a branch. Under Branch, select gh-pages.
+- run the script : 
+`ruby generate_staging_deployment.rb deploy /SOSCD
+`
+to set the base urls throughout the repository to deploy on personal github portfolio. This will be used to validate design changes on personal github portfolio (staging environment). <b><i>"/SOSCD"</i></b> is the project name, which will be used as base url in config.yml.
+- Running the above file, the append '/SOSCD' project name to all the image urls in the repository, and update base_url in _config.yml file.
+- After testing, to revert the changes, run:
+`ruby generate_staging_deployment.rb revert /SOSCD
+`
+- In <i>Settings</i> of the repository, Navigate to <i>Pages</i>. Under <i>Builld and deployment</i>, set Source as <i>Deploy from a branch</i>. Under <i>Branch</i>, select gh-pages.
 - If there is no 'gh-pages' branch in your repository, run the following commands on your terminal first. 
 
-`git checkout --orphan gh-pages
+   `git checkout --orphan gh-pages
 
-git rm -rf .
+   git rm -rf .
 
-git commit -m "Initial gh-pages commit"
+   git commit -m "Initial gh-pages commit"
 
-git push origin gh-pages
+   git push origin gh-pages
 
-`
+   `
 
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
 
