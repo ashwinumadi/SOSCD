@@ -1,3 +1,27 @@
+# How to modify contents in this repository?
+### News
+- Update the latest News in ./news.yml file.
+--- ./new_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from ./news.yml file and converts it to a markdown file, and stores i _pages/news.md
+### Opening
+- Update the latest Openings content in _pages/recruitment.md.
+### Publications
+- Update the latest Publication in _bibliography/references.bib.
+--- ./publications_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in _bibliography/references.bib file, and customizes the Javascript code to handle filtering logic of publications page. 
+--- The generated Javascript code is always pasted between the following two comment lines in _pages/publications.md file: 
+"DO NOT REMOVE THIS LINE : BEGIN" and "DO NOT REMOVE THIS LINE : END".
+### People
+- Update the latest People information in _pages/people.md
+### Funding
+- Update the latest Funding information in _pages/project_research.md
+### About
+- Update the About content in _pages/about.md
+
+## Staging Deployment : How to deploy the website on personal github repository to validate future design changes.
+
+- run the script : generate_staging_deployment.sh to set the urls throughout the repository to deploy on personal github portfolio.
+
+
+
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
