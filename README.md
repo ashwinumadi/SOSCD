@@ -1,12 +1,12 @@
 # How to update contents in this repository?
 ### News
 - Update the latest News in <i>./news.yml</i> file.
-- ./new_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from ./news.yml file and converts it to a markdown file, and stores in _pages/news.md
+- <i>./new_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from <i>./news.yml</i> file and converts it to a markdown file, and stores in <i>_pages/news.md</i>
 ### Opening
 - Update the latest Openings content in <i>_pages/recruitment.md</i>.
 ### Publications
 - Update the latest Publication in <i>_bibliography/references.bib</i>.
-- ./publications_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in _bibliography/references.bib file, and customizes the Javascript code to handle filtering logic of publications page. 
+- <i>./publications_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in <i>_bibliography/references.bib</i> file, and customizes the Javascript code to handle filtering logic of publications page. 
 - The generated Javascript code is always pasted between the following two comment lines in _pages/publications.md file: 
 "DO NOT REMOVE THIS LINE : BEGIN" and "DO NOT REMOVE THIS LINE : END".
 ### People
