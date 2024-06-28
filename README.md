@@ -32,10 +32,10 @@ to set the base urls throughout the repository to deploy on personal github port
 - In <i>Settings</i> of the repository, Navigate to <i>Pages</i>. Under <i>Builld and deployment</i>, set Source as <i>Deploy from a branch</i>. Under <i>Branch</i>, select gh-pages.
 - If there is no 'gh-pages' branch in your repository, run the following commands on your terminal first. 
 
-`git checkout --orphan gh-pages
-git rm -rf .
-git commit -m "Initial gh-pages commit"
-git push origin gh-pages`
+`git checkout --orphan gh-pages\n
+git rm -rf .\n
+git commit -m "Initial gh-pages commit"\n
+git push origin gh-pages\n`
 
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
 
