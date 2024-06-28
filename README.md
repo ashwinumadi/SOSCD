@@ -1,43 +1,41 @@
 # How to update contents in this repository?
 ### News
-- Update the latest News in ./news.yml file.
+- Update the latest News in <i>./news.yml</i> file.
 - ./new_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from ./news.yml file and converts it to a markdown file, and stores in _pages/news.md
 ### Opening
-- Update the latest Openings content in _pages/recruitment.md.
+- Update the latest Openings content in <i>_pages/recruitment.md</i>.
 ### Publications
-- Update the latest Publication in _bibliography/references.bib.
+- Update the latest Publication in <i>_bibliography/references.bib</i>.
 - ./publications_generator.rb file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in _bibliography/references.bib file, and customizes the Javascript code to handle filtering logic of publications page. 
 - The generated Javascript code is always pasted between the following two comment lines in _pages/publications.md file: 
 "DO NOT REMOVE THIS LINE : BEGIN" and "DO NOT REMOVE THIS LINE : END".
 ### People
-- Update the latest People information in _pages/people.md
+- Update the latest People information in <i>_pages/people.md</i>
 ### Funding
-- Update the latest Funding information in _pages/project_research.md
+- Update the latest Funding information in <i>_pages/project_research.md</i>
 ### About
-- Update the About content in _pages/about.md
+- Update the About content in <i>_pages/about.md</i>
 
 ## Staging Deployment : How to deploy the website on personal github repository to validate future design changes.
 
 - run the script : 
-`ruby generate_staging_deployment.rb deploy /SOSCD
-`
-to set the base urls throughout the repository to deploy on personal github portfolio. This will be used to validate design changes on personal github portfolio (staging environment). <b><i>"/SOSCD"</i></b> is the project name, which will be used as base url in config.yml.
+
+`ruby generate_staging_deployment.rb deploy /SOSCD`
+
+to set the base urls throughout the repository to deploy on personal github portfolio. This will be used to validate design changes on personal github portfolio (staging environment).
+- <b><i>"/SOSCD"</i></b> is the project name, which will be used as base url in config.yml.
 - Running the above file, the append '/SOSCD' project name to all the image urls in the repository, and update base_url in _config.yml file.
 - After testing, to revert the changes, run:
-`ruby generate_staging_deployment.rb revert /SOSCD
-`
+
+`ruby generate_staging_deployment.rb revert /SOSCD`
+
 - In <i>Settings</i> of the repository, Navigate to <i>Pages</i>. Under <i>Builld and deployment</i>, set Source as <i>Deploy from a branch</i>. Under <i>Branch</i>, select gh-pages.
 - If there is no 'gh-pages' branch in your repository, run the following commands on your terminal first. 
 
-   `git checkout --orphan gh-pages
-
-   git rm -rf .
-
-   git commit -m "Initial gh-pages commit"
-
-   git push origin gh-pages
-
-   `
+`git checkout --orphan gh-pages
+git rm -rf .
+git commit -m "Initial gh-pages commit"
+git push origin gh-pages`
 
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
 
