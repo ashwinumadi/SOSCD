@@ -80,9 +80,9 @@ def add_prefix_to_image_in_bib(bib_filename, prefix)
   
     new_lines = lines.map do |line|
       if match = line.match(baseurl_pattern)
-        if action == 'deploy'
+        if action == 'staging'
           line = "#{match[1]}\"#{prefix}\"\n"
-        elsif action == 'revert'
+        elsif action == 'live'
           line = "#{match[1]}\"\"\n"
         end
       end
@@ -95,22 +95,22 @@ def add_prefix_to_image_in_bib(bib_filename, prefix)
   end
   
   def main(action, bib_filename, md_filename, config_filename, prefix)
-    if action == 'deploy'
+    if action == 'staging'
       add_prefix_to_image_in_bib(bib_filename, prefix)
       add_prefix_to_image_in_md(md_filename, prefix)
       update_baseurl_in_config(config_filename, action, prefix)
-    elsif action == 'revert'
+    elsif action == 'live'
       remove_prefix_from_image_in_bib(bib_filename, prefix)
       remove_prefix_from_image_in_md(md_filename, prefix)
       update_baseurl_in_config(config_filename, action, prefix)
     else
-      puts "Invalid action. Use 'deploy' or 'revert'."
+      puts "Invalid action. Use 'staging' or 'live'."
     end
   end
   
   # Usage: ruby modify_images.rb [add|remove] [prefix]
   if ARGV.length != 2
-    puts "Usage: ruby modify_images.rb [deploy|revert] [prefix]"
+    puts "Usage: ruby modify_images.rb [deploy|live] [prefix]"
   else
     action = ARGV[0]
     bib_filename = "_bibliography/references.bib"
