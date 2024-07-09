@@ -20,14 +20,14 @@
 
 - run the script : 
 
-`ruby generate_staging_deployment.rb deploy /SOSCD`
+`ruby generate_staging_deployment.rb staging /SOSCD`
 
 to set the base urls throughout the repository to deploy on personal github portfolio. This will be used to validate design changes on personal github portfolio (staging environment).
 - <b><i>"/SOSCD"</i></b> is the project name, which will be used as base url in config.yml.
 - Running the above file, the append '/SOSCD' project name to all the image urls in the repository, and update base_url in _config.yml file.
-- After testing, to revert the changes, run:
+- After testing, to revert the changes and to push the changes to live, run:
 
-`ruby generate_staging_deployment.rb revert /SOSCD`
+`ruby generate_staging_deployment.rb live /SOSCD`
 
 - In <i>Settings</i> of the repository, Navigate to <i>Pages</i>. Under <i>Builld and deployment</i>, set Source as <i>Deploy from a branch</i>. Under <i>Branch</i>, select gh-pages.
 - If there is no 'gh-pages' branch in your repository, run the following commands on your terminal first. 
