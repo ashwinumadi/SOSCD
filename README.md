@@ -40,6 +40,18 @@ to set the base urls throughout the repository to deploy on personal github port
 
 `git push origin gh-pages`
 
+## Deploying to Live
+
+- In your _config.yml file, change
+
+`url                      : https://scienceofscience.org`
+
+- Them run 
+
+`ruby generate_staging_deployment.rb live /SOSCD`
+
+- The above two changes will set all the urls appropriate for live deployment.
+
 # [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
