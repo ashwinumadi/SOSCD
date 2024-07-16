@@ -2,6 +2,7 @@
 ### News
 - Only Update the latest News in <i>./news.yml</i> file.
 - <i>./new_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from <i>./news.yml</i> file and converts it to a markdown file, and stores in <i>_pages/news.md</i>
+- Note that if you are running the website on your localhost, Github Actions will not be executed and you need to do the changes in _pages/news.md file itself.
 ### Opening
 - Only Update the latest Openings content in <i>_pages/recruitment.md</i>.
 ### Publications
@@ -9,6 +10,8 @@
 - <i>./publications_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in <i>_bibliography/references.bib</i> file, and customizes the Javascript code to handle filtering logic of publications page. 
 - The generated Javascript code is always pasted between the following two comment lines in _pages/publications.md file: 
 "DO NOT REMOVE THIS LINE : BEGIN" and "DO NOT REMOVE THIS LINE : END".
+- For any updates you might have to do between the above two lines of code, update the <i>./publications_generator.rb</i> file with the changes, and github actions with reflect the Javascript changes.
+- Note that if you are running the website on your localhost, Github Actions will not be executed and you need to do the changes in _pages/publications.md file itself. 
 ### People
 - Only Update the latest People information in <i>_pages/people.md</i>
 ### Funding
