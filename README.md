@@ -1,22 +1,26 @@
 # How to update contents in this repository?
 ### News
-- Update the latest News in <i>./news.yml</i> file.
+- Only Update the latest News in <i>./news.yml</i> file.
 - <i>./new_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the news content from <i>./news.yml</i> file and converts it to a markdown file, and stores in <i>_pages/news.md</i>
 ### Opening
-- Update the latest Openings content in <i>_pages/recruitment.md</i>.
+- Only Update the latest Openings content in <i>_pages/recruitment.md</i>.
 ### Publications
-- Update the latest Publication in <i>_bibliography/references.bib</i>.
+- Only Update the latest Publication in <i>_bibliography/references.bib</i>.
 - <i>./publications_generator.rb</i> file is automatically executed in the Github Actions everytime you push your changes to the remote repository. This file reads the publications in <i>_bibliography/references.bib</i> file, and customizes the Javascript code to handle filtering logic of publications page. 
 - The generated Javascript code is always pasted between the following two comment lines in _pages/publications.md file: 
 "DO NOT REMOVE THIS LINE : BEGIN" and "DO NOT REMOVE THIS LINE : END".
 ### People
-- Update the latest People information in <i>_pages/people.md</i>
+- Only Update the latest People information in <i>_pages/people.md</i>
 ### Funding
-- Update the latest Funding information in <i>_pages/project_research.md</i>
+- Only Update the latest Funding information in <i>_pages/project_research.md</i>
 ### About
-- Update the About content in <i>_pages/about.md</i>
+- Only Update the About content in <i>_pages/about.md</i>
 
 ## Staging Deployment : How to deploy the website on personal github repository to validate future design changes.
+
+- In your _config.yml file, change to
+
+`url : https://<github username>.github.io`
 
 - run the script : 
 
@@ -42,11 +46,11 @@ to set the base urls throughout the repository to deploy on personal github port
 
 ## Deploying to Live
 
-- In your _config.yml file, change
+- In your _config.yml file, change to
 
-`url                      : https://scienceofscience.org`
+`url : https://scienceofscience.org`
 
-- Them run 
+- Then run 
 
 `ruby generate_staging_deployment.rb live /SOSCD`
 
